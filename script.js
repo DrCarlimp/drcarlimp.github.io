@@ -4,10 +4,19 @@ const nav = document.querySelector(".site-nav");
 const navLinks = [...document.querySelectorAll(".site-nav a")];
 const sections = [...document.querySelectorAll("main section[id]")];
 const year = document.querySelector("#year");
+const profilePhoto = document.querySelector("[data-profile-photo]");
 
 if (year) {
   year.textContent = new Date().getFullYear();
 }
+
+profilePhoto?.addEventListener("load", () => {
+  profilePhoto.closest(".profile-photo")?.classList.add("has-image");
+});
+
+profilePhoto?.addEventListener("error", () => {
+  profilePhoto.closest(".profile-photo")?.classList.remove("has-image");
+});
 
 function closeNavigation() {
   body.classList.remove("nav-open");
